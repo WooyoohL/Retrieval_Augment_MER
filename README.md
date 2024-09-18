@@ -18,10 +18,12 @@ Leveraging Retrieval Augment Approach for Multimodal Emotion Recognition Under M
 
 ### Key Implementations
 
-- Noisy embedding construction `models/Noise_scheduler.py Line 74`;
-- Contrastive learning between modalities `models/Contrastive_model.py Line 182`;
-- Contrastive learning between original and noisy features `models/Contrastive_model.py Line 190`;
-- Calculate contrastive loss `models/Contrastive_model.py Line 202`;
+- Don't add Multimodal interaction in the Pretrain Model ;
+- First pretrain the Unimodal Basemodel in `models/pretrain_model.py`.
+- Inferencing the whole dataset and saving the hidden state in `models/pretrain_model.py line 86/99/111  cls_output_A/V/L`.
+- FAISS index creating `models/retrieval_augmentor.py line 192`;
+- Retrieval approach `models/retrieval_augmentor.py line 141 get_most_similar_vectors`;
+- Utilizing retrieval approach `models/retrieval_model.py line 105, 215`.
 
 
 
