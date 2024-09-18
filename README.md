@@ -11,24 +11,7 @@ Leveraging Retrieval Augment Approach for Multimodal Emotion Recognition Under M
 
 ### Overview
 <div style="text-align: center">
-<img src="resource/framework.jpg" width = "100%"/>
-</div>
-
-### Main Results
-
-Our method won the 88.25% WAF on the MER2024-SEMI leaderboard.
-<div style="text-align: center">
-<img src="resource/mainresult.jpg" width = "70%"/>
-</div>
-
-The pseudo-label threshold configuration:
-
-For "happy", "neutral", "angry", and "sad": 0.99
-
-For "worried" and "surprise": 0.85
-
-<div style="text-align: center">
-<img src="resource/pseudo_label.jpg" width = "70%"/>
+<img src="resource/framework.pdf" width = "100%"/>
 </div>
 
 
