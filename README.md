@@ -8,6 +8,8 @@ Leveraging Retrieval Augment Approach for Multimodal Emotion Recognition Under M
   <img src="https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?e&logo=PyTorch&logoColor=white">
 </p>
 
+### STATUS: Under review
+
 
 ### Overview
 <div style="text-align: center">
@@ -42,11 +44,13 @@ Then you need to
 ```
 git clone https://github.com/zeroQiaoba/MERTools.git
 ```
-to process the dataset and extract the multimodal features. The specific utilization can be found in the address above.
+to process the dataset and extract the multimodal features.
+
+The specific utilization can be found at the address above.
 
 Other requirements can also refer to the MER2024 GitHub repository.
 
-We follow Zhao et al.[MMIN](https://github.com/AIM3-RUC/MMIN/tree/master) and Zuo et al.[IF-MMIN](https://github.com/ZhuoYulang/IF-MMIN) to construct the missing modality conditions. 
+We follow Zhao et al. [MMIN](https://github.com/AIM3-RUC/MMIN/tree/master) and Zuo et al. [IF-MMIN](https://github.com/ZhuoYulang/IF-MMIN) to construct the missing modality conditions. 
 
 
 ### Datasets Preparation
