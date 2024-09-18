@@ -50,7 +50,7 @@ to process the dataset and extract the multimodal features.
 
 The specific utilization can be found at the address above.
 
-Other requirements can also refer to the MER2024 GitHub repository.
+Other requirements can also refer to the [MER2024](https://github.com/zeroQiaoba/MERTools/tree/master/MER2024) GitHub repository.
 
 We follow Zhao et al. [MMIN](https://github.com/AIM3-RUC/MMIN/tree/master) and Zuo et al. [IF-MMIN](https://github.com/ZhuoYulang/IF-MMIN) to construct the missing modality conditions. 
 
