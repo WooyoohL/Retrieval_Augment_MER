@@ -53,7 +53,7 @@ Other requirements can also refer to the MER2024 GitHub repository.
 We follow Zhao et al. [MMIN](https://github.com/AIM3-RUC/MMIN/tree/master) and Zuo et al. [IF-MMIN](https://github.com/ZhuoYulang/IF-MMIN) to construct the missing modality conditions. 
 
 
-### Datasets Preparation
+### Dataset Preparation
 #### MER2024 Dataset
 
 Please download and fill out the End User License Agreement, then send it to merchallenge.contact@gmail.com to access the data. The EULA file and the contact information can be found at [MER2024](https://github.com/zeroQiaoba/MERTools/tree/master/MER2024). 
