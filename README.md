@@ -13,7 +13,7 @@ Leveraging Retrieval Augment Approach for Multimodal Emotion Recognition Under M
 
 ### Overview
 <div style="text-align: center">
-<img src="resources/framework.pdf" width = "80%"/>
+<img src="resources/framework.png" width = "80%"/>
 </div>
 
 
