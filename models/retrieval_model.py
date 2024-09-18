@@ -74,11 +74,11 @@ class MULTICONTRASTIVEModel(BaseModel):
         self.model_names = ['C', 'linearA', 'linearV', 'linearT']  # 六个模块的名称
 
         self.model_names.append('A')
-        # # lexical model 文本
+        # # lexical model 
         self.model_names.append('L')
         # # visual model
         self.model_names.append('V')
-        # 分类层
+        
         cls_layers = list(map(lambda x: int(x), opt.cls_layers.split(',')))
 
         self.cls_token_A = nn.Parameter(torch.zeros(1, 1, self.audio_dim), requires_grad=True).to(self.device)
@@ -89,7 +89,6 @@ class MULTICONTRASTIVEModel(BaseModel):
         self.positional_encoding_V = nn.Parameter(torch.zeros(1, 2, self.video_dim)).to(self.device)
         self.positional_encoding_L = nn.Parameter(torch.zeros(1, 2, self.text_dim)).to(self.device)
 
-        # Transformer 编码器层
         encoder_layer_A = TransformerEncoderLayer(d_model=self.audio_dim, nhead=8, dim_feedforward=self.hidden_dim,
                                                   batch_first=True)
         self.netA = TransformerEncoder(encoder_layer_A, num_layers=1)
@@ -242,79 +241,6 @@ class MULTICONTRASTIVEModel(BaseModel):
         self.backward()
 
         self.optimizer.step()
-
-    def cal_loss(self, feat_A, feat_V, feat_L,
-                 feat_A_arg=None, feat_V_arg=None, feat_L_arg=None, ):
-
-        modality_contrastive_AV = self.nt_xent_loss(feat_A, feat_V, self.temperature1)
-        modality_contrastive_AL = self.nt_xent_loss(feat_A, feat_L, self.temperature2)
-        modality_contrastive_VL = self.nt_xent_loss(feat_V, feat_L, self.temperature3)
-
-        modality_contrastive_A_VL = self.nt_xent_loss(feat_A, feat_V + feat_L,
-                                                      temperature=self.temperature8)
-        modality_contrastive_V_AL = self.nt_xent_loss(feat_V, feat_A + feat_L,
-                                                      temperature=self.temperature9)
-        modality_contrastive_L_AV = self.nt_xent_loss(feat_L, feat_A + feat_V,
-                                                      temperature=self.temperature10)
-        #
-        modality_contrastive_loss = (modality_contrastive_AV + modality_contrastive_AL + modality_contrastive_VL +
-                                     modality_contrastive_A_VL
-                                     + modality_contrastive_V_AL + modality_contrastive_L_AV) / 6
-        # noise_contrastive_loss_A = self.nt_xent_loss(feat_A, feat_A_arg, self.temperature4)
-        # noise_contrastive_loss_V = self.nt_xent_loss(feat_V, feat_V_arg, self.temperature5)
-        # noise_contrastive_loss_L = self.nt_xent_loss(feat_L, feat_L_arg, self.temperature6)
-        # noise_contrastive_loss = noise_contrastive_loss_A + noise_contrastive_loss_V + noise_contrastive_loss_L
-
-        return modality_contrastive_loss  # + noise_contrastive_loss
-
-    def get_cmd_loss(self, feat_A_inv, feat_V_inv, feat_L_inv):
-        # losses between shared states
-        loss = self.loss_cmd_func(feat_A_inv, feat_V_inv, 5)
-        loss += self.loss_cmd_func(feat_A_inv, feat_L_inv, 5)
-        loss += self.loss_cmd_func(feat_L_inv, feat_V_inv, 5)
-        loss = loss / 3.0
-
-        return loss
-
-    def nt_xent_loss(self, z_i, z_j, temperature):
-        """
-        Compute the NT-Xent (Normalized Temperature-scaled Cross Entropy Loss)
-        between two batches of embeddings, which are positive pairs to each other.
-
-        Args:
-        - z_i (torch.Tensor): Batch of embeddings.
-        - z_j (torch.Tensor): Batch of embeddings, each is a positive pair to the corresponding in z_i.
-        - temperature (float): Temperature scaling parameter for the softmax.
-
-        Returns:
-        - loss (torch.Tensor): The computed NT-Xent loss.
-        """
-        # Concatenate the embeddings to form a single batch
-        z = torch.cat([z_i, z_j], dim=0)
-
-        # Compute cosine similarity as dot product in feature space
-        sim_matrix = torch.mm(z, z.T) / temperature
-
-        # Scale similarity by temperature
-        sim_matrix /= temperature
-
-        # For numerical stability purposes, subtract the maximum value from the logits
-        logits_max, _ = torch.max(sim_matrix, dim=1, keepdim=True)
-        logits = sim_matrix - logits_max.detach()
-
-        # Create a mask to select all positive pairs (i.e., diagonal elements in the 2Nx2N matrix)
-        mask = torch.eye(z.size(0), dtype=torch.bool, device=z.device)
-        labels = torch.arange(z.size(0), device=z.device)
-
-        # Set labels for each entry in the batch
-        labels = torch.cat([labels[z_i.size(0):], labels[:z_j.size(0)]], dim=0)
-
-        # Compute log-softmax
-        log_probs = F.log_softmax(logits, dim=1)
-
-        # Compute the loss as mean negative log-likelihood of the positive examples
-        loss = -log_probs[mask]
-        return loss.mean()
 
     def retrieval_augment(self, a, v, t):
         batch_size = self.A_miss.size(0)
