@@ -36,7 +36,7 @@ Emotion Recognition Under Missing Modalities
 Create a conda environment with PyTorch
 
 ```
-conda create --name contrastive python=3.9
+conda create --name RAMER python=3.9
 conda activate RAMER
 
 pip install torch torchvision torchaudio numpy pandas sklearn scipy tqdm pickle omegaconf
