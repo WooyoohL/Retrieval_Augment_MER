@@ -1,4 +1,4 @@
-# RAMER
+# Retrieval Augmented Multimodal Emotion Recognition
 <h2 align="center">
 Leveraging Retrieval Augment Approach for Multimodal
   
