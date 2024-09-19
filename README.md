@@ -42,6 +42,15 @@ conda activate RAMER
 pip install torch torchvision torchaudio numpy pandas sklearn scipy tqdm pickle omegaconf
 conda install pytorch::faiss-gpu
 ```
+
+We follow Zhao et al. [MMIN](https://github.com/AIM3-RUC/MMIN/tree/master) and Zuo et al. [IF-MMIN](https://github.com/ZhuoYulang/IF-MMIN) to construct the missing modality conditions. 
+
+
+### Dataset Preparation
+#### MER2024 Dataset
+
+Please download and fill out the End User License Agreement, then send it to merchallenge.contact@gmail.com to access the data. The EULA file and the contact information can be found at [MER2024](https://github.com/zeroQiaoba/MERTools/tree/master/MER2024). 
+
 Then you need to 
 ```
 git clone https://github.com/zeroQiaoba/MERTools.git
@@ -51,14 +60,6 @@ to process the dataset and extract the multimodal features.
 The specific utilization can be found at the address above.
 
 Other requirements can also refer to the [MER2024](https://github.com/zeroQiaoba/MERTools/tree/master/MER2024) GitHub repository.
-
-We follow Zhao et al. [MMIN](https://github.com/AIM3-RUC/MMIN/tree/master) and Zuo et al. [IF-MMIN](https://github.com/ZhuoYulang/IF-MMIN) to construct the missing modality conditions. 
-
-
-### Dataset Preparation
-#### MER2024 Dataset
-
-Please download and fill out the End User License Agreement, then send it to merchallenge.contact@gmail.com to access the data. The EULA file and the contact information can be found at [MER2024](https://github.com/zeroQiaoba/MERTools/tree/master/MER2024). 
 
 
 ### Acknowledgment
