@@ -1,7 +1,6 @@
-<h2 align="center">
 # Leveraging Retrieval Augment Approach for Multimodal
   
-Emotion Recognition Under Missing Modalities
+# Emotion Recognition Under Missing Modalities
 </h2>
 
 <p align="center">
