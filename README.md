@@ -1,6 +1,4 @@
-<h align="center">
-# Leveraging Retrieval Augment Approach for Multimodal Emotion Recognition Under Missing Modalities
-<h>
+# Leveraging Retrieval Augment Approach for Multimodal Emotion Recognition Under Missing Modalities 
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg">
