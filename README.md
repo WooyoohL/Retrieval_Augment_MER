@@ -1,6 +1,5 @@
-# Retrieval Augmented Multimodal Emotion Recognition
 <h2 align="center">
-Leveraging Retrieval Augment Approach for Multimodal
+#Leveraging Retrieval Augment Approach for Multimodal
   
 Emotion Recognition Under Missing Modalities
 </h2>
