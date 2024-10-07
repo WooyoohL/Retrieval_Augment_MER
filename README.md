@@ -17,7 +17,7 @@
 
 ### Key Implementations
 
-- Don't add Multimodal interaction in the Pretrain Model ;
+- Do not add multimodal interaction in the Pretrain Model ;
 - First pretrain the Unimodal Basemodel in `models/pretrain_model.py`.
 - Inferencing the whole dataset and saving the hidden state in `models/pretrain_model.py line 86/99/111  cls_output_A/V/L`.
 - FAISS index creating `models/retrieval_augmentor.py line 192`;
